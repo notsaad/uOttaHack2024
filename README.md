@@ -1,51 +1,21 @@
-# Uotthack24
-my name is Samuel Braun, I love programming and romantic walks on the beach.
+# uOttaHack 2024 Project: Sustain
 
-## Steps to set up/run
-### Setup python venv and install flask
-1. Create python virtual environment ```python3 -m venv .venv```
-2. Activate virtual environment every time you open a new terminal session: ```. .venv/bin/activate```
-3. Install flask: ```pip install flask```
-4. Install gcp
-
-### Running:
-1. Tell flask what the entrypoint is```export FLASK_APP=server.py```
-2. run the app (should work after setting up venv): ```flask run```
+![leaf_icon-removebg-preview(1)](https://github.com/user-attachments/assets/cc50d587-eb5b-4177-a5f5-2214e4ee4a3e)
 
 
-## Flask Endpoint
-```/visionText``` POST endpoint for an image file. Image needs to be named 'image'. Success response:
-```json
- {
-            "Success": True,
-            "Material_Footprint": materialFootprint,
-            "Shipping_Footpring": shippingFootpring,
-            "Water_Usage": waterUsage,
-            "Brand_Score": brandScore,
-            "Final_Score": finalScore
-        }
-```
+[Demo Video & Devpost Listing](https://devpost.com/software/sustain-5z8wkg)
 
-## String manipulation algorithms
-Need to manipulate strings to get important information out of clothing labels
-## text_extract.py
-Takes string input and produces an output that looks like this based on what could be found:
-```json
-{
-    "location": "somewhere",
-    "RN": 12345,
-    "CA": 12345,
-    "materials": {
-        "COTTON": 80, 
-        "POLYESTER": 20, 
-        "NYLON": 0,
-        "SILK": 0,
-        "LEATHER": 0, 
-        "WOOL": 0,
-        "VISCOSE": 0,
-        "LINEN": 0,
-        "ACRYLIC FABRIC": 0
-    }
-}
-```
+## How It Works:
+1. The user takes an image of a clothing tag on the app.
+2. That image is broken down into metadata, and sent to the Flask endpoint.
+3. The Flask endpoint then sends the metadata to the Google Vision AI API which scans it for readable text.
+4. This readable text is sent back to the Flask endpoint to be used in the backend algorithms to calculate emissions.
+5. Based on a variety of factors (country of origin, manufacturer, material makeup) a sustainability score is calculated, and send to the endpoint in the form of JSON.
+6. This JSON is then unpacked and displayed in the app for the user to see.
 
+## Technologies Used:
+- Flask
+- Python
+- Google Vision AI API
+- React Native
+- JavaScript
